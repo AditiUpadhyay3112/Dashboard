@@ -1,0 +1,23 @@
+.shadow-div {
+    box-shadow: -12px 12px 3px #00000095;
+}
+.di{
+    border-style: inset;
+}
+/* PieChart.css */
+
+.chart-container {
+    width: 300px; /* Adjust as needed */
+    height: 300px; /* Adjust as needed */
+    position: relative;
+  }
+                    
+
+
+
+
+
+
+
+
+               

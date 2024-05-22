@@ -23,19 +23,22 @@ const Header = () => {
                 <NavLink>
                   <li className='mx-4  hover:text-[#f6cf95] '>Tasks</li>
                 </NavLink>
-                <NavLink>
-                  <li className='mx-4  hover:text-[#f6cf95] '>Contact</li>
+                <NavLink to={"/contact"}>
+                  <li className='mx-4  hover:text-[#f6cf95] '>Feedback</li>
                 </NavLink>
-                </ul>
-                <div className='flex absolute md:-top-0 md:-right-[400px] '>
-                  <div className=' text-white hover:text-[#f6cf95] font-serif font-semibold md:text-2xl '>
-                    <NavLink>Candidate Name </NavLink>
+               
+               
+                <div className='flex absolute -right-[500px]  '>
+                <div className=' text-white hover:text-[#f6cf95] font-serif font-semibold md:text-2xl '>
+                    <NavLink to={'/sportal'}>Aditi</NavLink>
                   </div>
-                  <div className='text-white absolute md:left-60 left-96 bottom-5 hover:text-[#f6cf95] md:bottom-[0.1px]'>
-                  <CgProfile size={45}  />
+                  <div className='text-white ml-4   hover:text-[#f6cf95]'>
+                  <CgProfile size={45}/>
 
                   </div>
                 </div>
+                </ul>
+
               </div>
             </div>
            
