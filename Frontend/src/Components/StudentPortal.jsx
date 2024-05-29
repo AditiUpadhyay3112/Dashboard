@@ -17,7 +17,7 @@ const StudentPortal = () => {
           "http://localhost:3000/api/currentUser",
           { withCredentials: true }
         );
-        console.log(response.data.data);
+        // console.log(response.data.data);
         setUser(response.data.data);
       } catch (error) {
         console.log(error);
@@ -34,7 +34,6 @@ const StudentPortal = () => {
           <>
             <div className="rounded-lg h-[200px] md:h-[300px] bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634] relative">
               <img src={img1} className="w-40 md:w-80 absolute z-50" alt="" />
-              <h1>{user && user.name}</h1>
             </div>
             <div className="rounded-lg h-[200px] md:h-[300px]  bg-[#6c4869] border px-2 md:px-4 py-2 md:py-4 border-[#ff9634] shadow-2xl shadow-black">
               <div className="shadow-xl shadow-black py-2 rounded-lg">

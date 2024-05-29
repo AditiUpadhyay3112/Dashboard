@@ -6,99 +6,123 @@ import { WorkshopTask } from "../Modles/WorkshopTaskModel.js";
 import { catchAsyncError } from "../Modles/catchAsyncError.js";
 import ErrorHandler from "../Modles/error.js";
 
-export const submitStudentTask = catchAsyncError(async (req, res, next) => {
-  const { taskId, description, number } = req.body;
-  const studentId = req.user._id;
+export const submitStudentTask = async (req, res) => {
+  try {
+    const { taskId, description, number } = req.body;
+    const studentId = req.user._id;
 
-  const findTask = await StudentTask.findOne({
-    $and: [{ taskId }, { studentId }],
-  });
+    const findTask = await StudentTask.findOne({
+      $and: [{ taskId }, { studentId }],
+    });
 
-  if (findTask) {
-    return next(new ErrorHandler("Task already exists", 400));
+    if (findTask) {
+      return res.status(400).json({ error: "Task already submitted" });
+    }
+
+    const studentTask = await StudentTask.create({
+      taskId,
+      description,
+      number,
+      studentId,
+    });
+
+    return res
+      .status(200)
+      .json({ message: "Task Added Successfully", data: studentTask });
+  } catch (error) {
+    return res.status(400).json({ error: error });
   }
+};
 
-  const studentTask = await StudentTask.create({
-    taskId,
-    description,
-    number,
-    studentId,
-  });
+export const submitSocialTask = async (req, res) => {
+  try {
+    const { taskId, description, shares, followers } = req.body;
+    const studentId = req.user._id;
 
-  return res
-    .status(200)
-    .json({ message: "Task Added Successfully", data: studentTask });
-});
+    const findTask = await SocialTask.findOne({
+      $and: [{ taskId }, { studentId }],
+    });
 
-export const submitSocialTask = catchAsyncError(async (req, res) => {
-  const { taskId, description, shares, followers } = req.body;
-  const studentId = req.user._id;
+    if (findTask) {
+      return res.status(400).json({ error: "Task already submitted" });
+    }
 
-  const findTask = await SocialTask.findOne([{ taskId }, { studentId }]);
+    const socialTask = await SocialTask.create({
+      taskId,
+      description,
+      shares,
+      followers,
+      studentId,
+    });
 
-  if (findTask) {
-    return next(new ErrorHandler("Task already exists", 400));
+    return res
+      .status(200)
+      .json({ message: "Task Added Successfully", data, socialTask });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
   }
+};
 
-  const socialTask = await SocialTask.create({
-    taskId,
-    description,
-    shares,
-    followers,
-    studentId,
-  });
+export const submitMasterclassTask = async (req, res) => {
+  try {
+    const { taskId, description, registrations } = req.body;
+    const studentId = req.user._id;
 
-  return res
-    .status(200)
-    .json({ message: "Task Added Successfully", data, socialTask });
-});
+    const findTask = await MasterclassTask.findOne({
+      $and: [{ taskId }, { studentId }],
+    });
 
-export const submitMasterclassTask = catchAsyncError(async (req, res) => {
-  const { taskId, description, registrations } = req.body;
-  const studentId = req.user._id;
+    if (findTask) {
+      return res.status(400).json({ error: "Task already submitted" });
+    }
 
-  const findTask = await MasterclassTask.findOne([{ taskId }, { studentId }]);
+    const masterclassTask = await MasterclassTask.create({
+      taskId,
+      description,
+      registrations,
+      studentId,
+    });
 
-  if (findTask) {
-    return next(new ErrorHandler("Task already exists", 400));
+    return res
+      .status(200)
+      .json({ message: "Task Added Successfully", data, masterclassTask });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
   }
+};
 
-  const masterclassTask = await MasterclassTask.create({
-    taskId,
-    description,
-    registrations,
-    studentId,
-  });
+export const submitWorkshopTask = async (req, res) => {
+  try {
+    const { taskId, description, organisation } = req.body;
+    const studentId = req.user._id;
 
-  return res
-    .status(200)
-    .json({ message: "Task Added Successfully", data, masterclassTask });
-});
-submitStudentTask;
+    const findTask = await WorkshopTask.findOne({
+      $and: [{ taskId }, { studentId }],
+    });
 
-export const submitWorkshopTask = catchAsyncError(async (req, res) => {
-  const { taskId, description, organisation } = req.body;
-  const studentId = req.user._id;
+    if (findTask) {
+      return res.status(400).json({ error: "Task already submitted" });
+    }
 
-  const findTask = await WorkshopTask.findOne([{ taskId }, { studentId }]);
+    const workshopTask = await WorkshopTask.create({
+      taskId,
+      description,
+      organisation,
+      studentId,
+    });
 
-  if (findTask) {
-    return next(new ErrorHandler("Task already exists", 400));
+    return res
+      .status(200)
+      .json({ message: "Task Added Successfully", data, workshopTask });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
   }
+};
 
-  const workshopTask = await WorkshopTask.create({
-    taskId,
-    description,
-    organisation,
-    studentId,
-  });
-
-  return res
-    .status(200)
-    .json({ message: "Task Added Successfully", data, workshopTask });
-});
-
-export const createAdminTask = catchAsyncError(async (req, res) => {
+export const createAdminTask = async (req, res) => {
   const { description } = req.body;
 
   await AdminTask.deleteMany({});
@@ -110,4 +134,4 @@ export const createAdminTask = catchAsyncError(async (req, res) => {
   return res
     .status(200)
     .json({ message: "Task created successfully", data: adminTask });
-});
+};
