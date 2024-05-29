@@ -8,8 +8,15 @@ import ErrorHandler from "../Modles/error.js";
 
 export const submitStudentTask = async (req, res) => {
   try {
-    const { taskId, description, number } = req.body;
+    const { description, number } = req.body;
     const studentId = req.user._id;
+
+    const task = await AdminTask.findOne({});
+
+    if (!task)
+      return res.status(400).json({ error: "No Admin Task is present" });
+
+    const taskId = task._id;
 
     const findTask = await StudentTask.findOne({
       $and: [{ taskId }, { studentId }],
@@ -36,8 +43,15 @@ export const submitStudentTask = async (req, res) => {
 
 export const submitSocialTask = async (req, res) => {
   try {
-    const { taskId, description, shares, followers } = req.body;
+    const { description, shares, followers } = req.body;
     const studentId = req.user._id;
+
+    const task = await AdminTask.findOne({});
+
+    if (!task)
+      return res.status(400).json({ error: "No Admin Task is present" });
+
+    const taskId = task._id;
 
     const findTask = await SocialTask.findOne({
       $and: [{ taskId }, { studentId }],
@@ -57,7 +71,7 @@ export const submitSocialTask = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "Task Added Successfully", data, socialTask });
+      .json({ message: "Task Added Successfully", data: socialTask });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error });
@@ -66,8 +80,15 @@ export const submitSocialTask = async (req, res) => {
 
 export const submitMasterclassTask = async (req, res) => {
   try {
-    const { taskId, description, registrations } = req.body;
+    const { description, registrations } = req.body;
     const studentId = req.user._id;
+
+    const task = await AdminTask.findOne({});
+
+    if (!task)
+      return res.status(400).json({ error: "No Admin Task is present" });
+
+    const taskId = task._id;
 
     const findTask = await MasterclassTask.findOne({
       $and: [{ taskId }, { studentId }],
@@ -86,7 +107,7 @@ export const submitMasterclassTask = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "Task Added Successfully", data, masterclassTask });
+      .json({ message: "Task Added Successfully", data: masterclassTask });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error });
@@ -95,8 +116,15 @@ export const submitMasterclassTask = async (req, res) => {
 
 export const submitWorkshopTask = async (req, res) => {
   try {
-    const { taskId, description, organisation } = req.body;
+    const { description, organization } = req.body;
     const studentId = req.user._id;
+
+    const task = await AdminTask.findOne({});
+
+    if (!task)
+      return res.status(400).json({ error: "No Admin Task is present" });
+
+    const taskId = task._id;
 
     const findTask = await WorkshopTask.findOne({
       $and: [{ taskId }, { studentId }],
@@ -109,13 +137,13 @@ export const submitWorkshopTask = async (req, res) => {
     const workshopTask = await WorkshopTask.create({
       taskId,
       description,
-      organisation,
+      organization,
       studentId,
     });
 
     return res
       .status(200)
-      .json({ message: "Task Added Successfully", data, workshopTask });
+      .json({ message: "Task Added Successfully", data: workshopTask });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error });
@@ -123,15 +151,35 @@ export const submitWorkshopTask = async (req, res) => {
 };
 
 export const createAdminTask = async (req, res) => {
-  const { description } = req.body;
+  const { title, description, date } = req.body;
 
   await AdminTask.deleteMany({});
 
   const adminTask = await AdminTask.create({
+    title,
     description,
+    date,
   });
 
   return res
     .status(200)
     .json({ message: "Task created successfully", data: adminTask });
+};
+
+export const getAdminTask = async (req, res) => {
+  try {
+    const adminTask = await AdminTask.findOne({});
+
+    console.log(adminTask);
+
+    if (!adminTask)
+      return res
+        .status(400)
+        .json({ error: "No Admin task assigned right now" });
+
+    return res.status(200).json({ data: adminTask });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
+  }
 };

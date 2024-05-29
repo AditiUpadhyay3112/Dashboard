@@ -7,7 +7,8 @@ import Home from "./Components/Home/Home.jsx";
 import StudentPortal from "./Components/StudentPortal.jsx";
 import Contact from "./Components/Contact.jsx";
 import Login from "./Components/Login.jsx";
-import ProtectedRoute from "./ProtectedRoute.jsx";
+import { elements } from "chart.js";
+import AdminPortal from "./Components/AdminPortal.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,11 +27,11 @@ const router = createBrowserRouter([
         path: "/sportal",
         element: <StudentPortal />,
       },
+      {
+        path: "/admin",
+        element: <AdminPortal />,
+      },
     ],
-  },
-  {
-    path: "/login",
-    element: <Login />,
   },
 ]);
 

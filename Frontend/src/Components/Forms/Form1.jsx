@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import { FaImage, FaUpload } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 
-const Form2 = () => {
+const Form1 = () => {
   const [file, setFile] = useState(null);
   const [taskDescription, setTaskDescription] = useState("");
   const [NumberofStudents, setNumberofStudents] = useState("");
@@ -91,4 +91,4 @@ const Form2 = () => {
   );
 };
 
-export default Form2;
+export default Form1;

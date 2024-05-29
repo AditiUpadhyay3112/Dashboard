@@ -1,11 +1,14 @@
 import mongoose, { Schema } from "mongoose";
 
 const adminTaskSchema = new Schema({
+  title: {
+    type: String,
+  },
   description: {
     type: String,
   },
-  dueDate: {
-    type: Date,
+  date: {
+    type: String,
   },
 });
 

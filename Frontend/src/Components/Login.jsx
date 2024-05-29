@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import image from "../Images/img6.png";
 import { IoIosArrowDroprightCircle, IoIosCloseCircle } from "react-icons/io";
 import "../App.css";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { IoAlertCircleOutline } from "react-icons/io5";
 import gif from "../Images/gif.gif";
+import { toast } from "react-hot-toast";
 import axios from "axios";
 
 const Login = ({ H1 }) => {
@@ -13,6 +14,7 @@ const Login = ({ H1 }) => {
     username: "",
     password: "",
   });
+  const navigate = useNavigate();
 
   const handleLogin = async () => {
     try {
@@ -26,9 +28,12 @@ const Login = ({ H1 }) => {
           withCredentials: true,
         }
       );
-      console.log(response);
+
+      navigate("/sportal");
+      toast.success("Logged in successfully");
     } catch (error) {
       console.log(error);
+      toast.error(error.response.data.error);
     }
   };
 

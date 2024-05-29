@@ -2,6 +2,7 @@ import express, { Router } from "express";
 import { isAuthorized } from "../Modles/UserAuthenticate.js";
 import {
   createAdminTask,
+  getAdminTask,
   submitMasterclassTask,
   submitSocialTask,
   submitStudentTask,
@@ -16,6 +17,7 @@ router.post("/student", submitStudentTask);
 router.post("/social", submitSocialTask);
 router.post("/masterclass", submitMasterclassTask);
 router.post("/workshop", submitWorkshopTask);
-router.post("/admin/create", createAdminTask);
+router.post("/admin", createAdminTask);
+router.get("/admin", getAdminTask);
 
 export default router;

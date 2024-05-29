@@ -7,7 +7,7 @@ import cors from "cors";
 import taskRouter from "./Routes/TaskRoutes.js";
 
 const app = express();
-
+dotenv.config();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
@@ -21,8 +21,6 @@ app.use(
 app.get("/", (req, res) => {
   res.send("Server is created");
 });
-
-dotenv.config();
 
 app.use("/task", taskRouter);
 app.use("/api", router);

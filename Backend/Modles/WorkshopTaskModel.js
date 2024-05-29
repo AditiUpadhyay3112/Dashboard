@@ -12,7 +12,7 @@ const workshopTaskSchema = new Schema({
   description: {
     type: String,
   },
-  organisation: {
+  organization: {
     type: String,
   },
 });
