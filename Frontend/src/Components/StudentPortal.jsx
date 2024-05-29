@@ -78,7 +78,7 @@ const StudentPortal = () => {
             case 'content2':
                 return (
                     <div className="rounded-lg col-span-2 bg-[#6c486900]  ">
-                        <SubmitTask />
+                      <SubmitTask/>
                     </div>
                 );
             case 'content3':
