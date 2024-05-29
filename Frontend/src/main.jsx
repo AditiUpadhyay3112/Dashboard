@@ -1,45 +1,41 @@
-import React from 'react'
-import ReactDOM from 'react-dom/client'
-import './index.css'
-import { RouterProvider, createBrowserRouter } from 'react-router-dom'
-import Layout from './Layout.jsx'
-import Home from './Components/Home/Home.jsx'
-import StudentPortal from './Components/StudentPortal.jsx'
-import Contact from './Components/Contact.jsx'
-import Login from './Components/Login.jsx'
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "./index.css";
+import { RouterProvider, createBrowserRouter } from "react-router-dom";
+import Layout from "./Layout.jsx";
+import Home from "./Components/Home/Home.jsx";
+import StudentPortal from "./Components/StudentPortal.jsx";
+import Contact from "./Components/Contact.jsx";
+import Login from "./Components/Login.jsx";
+import ProtectedRoute from "./ProtectedRoute.jsx";
 
-const router= createBrowserRouter([
+const router = createBrowserRouter([
   {
-    path:"/",
-    element: <Layout/>,
-    children:[
+    path: "/",
+    element: (
+      // <ProtectedRoute>
+      <Layout />
+      // </ProtectedRoute>
+    ),
+    children: [
       {
-        path:"",
-        element:<Home/>
-      
+        path: "",
+        element: <Home />,
       },
       {
-        path:"/login",
-        element:<Login/>
-      
+        path: "/sportal",
+        element: <StudentPortal />,
       },
-      {
-        path:"/sportal",
-        element:<StudentPortal/>
-      
-      },
-      {
-        path:"/contact",
-        element:<Contact/>
-      
-      },
-      
-    ]
-  }
-])
+    ],
+  },
+  {
+    path: "/login",
+    element: <Login />,
+  },
+]);
 
-ReactDOM.createRoot(document.getElementById('root')).render(
+ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
-  </React.StrictMode>,
-)
+    <RouterProvider router={router} />
+  </React.StrictMode>
+);
