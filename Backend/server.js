@@ -1,10 +1,10 @@
 import express from "express";
-import router from "./Routes/UserRoute.js";
-import { dbConnection } from "./DB/DBConnection.js";
+import router from "./src/Routes/UserRoute.js";
+import { dbConnection } from "./src/DB/DBConnection.js";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import taskRouter from "./Routes/TaskRoutes.js";
+import taskRouter from "./src/Routes/TaskRoutes.js";
 
 const app = express();
 dotenv.config();

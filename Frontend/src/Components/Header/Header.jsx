@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import img from "../../Images/upflairs white logo.png";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { CgProfile } from "react-icons/cg";
 import axios from "axios";
 import { IoLogOutOutline } from "react-icons/io5";
+import { toast } from "react-hot-toast";
 
 const Header = () => {
   const [user, setUser] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const getUser = async () => {
@@ -15,7 +17,6 @@ const Header = () => {
           "http://localhost:3000/api/currentUser",
           { withCredentials: true }
         );
-        console.log(response);
         setUser(response.data.data);
       } catch (error) {
         console.log(error);
@@ -25,12 +26,18 @@ const Header = () => {
     getUser();
   }, []);
 
-  const handleLogout = async (req, res) => {
+  const handleLogout = async () => {
     try {
-      const response = await axios.post("http://localhost:3000/api/logout", {
-        withCredentials: true,
-      });
-      console.log(response);
+      const response = await axios.post(
+        "http://localhost:3000/api/logout",
+        {},
+        {
+          withCredentials: true,
+        }
+      );
+
+      window.location.reload();
+      localStorage.removeItem("user");
     } catch (error) {
       console.log(error);
     }

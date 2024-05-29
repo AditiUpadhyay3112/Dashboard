@@ -10,23 +10,6 @@ import AddTasks from "./Forms/AddTasks";
 
 const AdminPortal = () => {
   const [activeContent, setActiveContent] = useState("content1");
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3000/api/currentUser",
-          { withCredentials: true }
-        );
-        // console.log(response);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    getUser();
-  }, []);
 
   const renderContent = () => {
     switch (activeContent) {

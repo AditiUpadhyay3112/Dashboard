@@ -1,7 +1,7 @@
-import { User } from "../Modles/UserSchema.js";
-import { catchAsyncError } from "../Modles/catchAsyncError.js";
-import ErrorHandler from "../Modles/error.js";
-import { generateTokenAndSetCookie, sendToken } from "../Modles/jwtToken.js";
+import { User } from "../Modles/UserModel.js";
+import { catchAsyncError } from "../recycle/catchAsyncError.js";
+import ErrorHandler from "../recycle/error.js";
+import { generateTokenAndSetCookie, sendToken } from "../recycle/jwtToken.js";
 
 export const createUser = async (req, res) => {
   try {
@@ -56,8 +56,9 @@ export const Login = async (req, res) => {
 };
 
 // LOGED OUT USER
-export const Logout = async (req, res) => {
+export const logout = async (req, res) => {
   try {
+    console.log(req.user);
     res.cookie("jwt", "", { maxAge: 1 });
     console.log("hello");
     res.status(200).json({ message: "user logged out successfully" });
@@ -67,6 +68,11 @@ export const Logout = async (req, res) => {
   }
 };
 
-export const getUser = catchAsyncError(async (req, res) => {
-  return res.status(200).json({ success: true, data: req.user });
-});
+export const getUser = async (req, res) => {
+  try {
+    return res.status(200).json({ success: true, data: req.user });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
+  }
+};

@@ -1,18 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import "./App.css";
+import { Navigate, Route, Routes } from "react-router-dom";
+import Layout from "./Layout";
+import Home from "./Components/Home/Home";
+import StudentPortal from "./Components/StudentPortal";
+import AdminPortal from "./Components/AdminPortal";
+import { useEffect, useState } from "react";
+import Login from "./Components/Login";
+import { Toaster } from "react-hot-toast";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    setUser(localStorage.getItem("user"));
+  }, []);
 
   return (
     <>
-      <div className='text-4xl text-pink-900 font-serif text-center shadow-black'> 
-        
-      </div>
+      <Toaster position="top-center" />
+      <Routes>
+        <Route path="/" element={user ? <Layout /> : <Navigate to="/login" />}>
+          <Route path="" element={<Home />} />
+          <Route path="sportal" element={<StudentPortal />} />
+        </Route>
+        <Route
+          path="/login"
+          element={!user ? <Login /> : <Navigate to="/" />}
+        />
+        <Route path="/admin" element={<AdminPortal />} />
+      </Routes>
     </>
-  )
+  );
 }
 
-export default App
+export default App;

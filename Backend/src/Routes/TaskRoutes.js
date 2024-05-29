@@ -1,5 +1,5 @@
 import express, { Router } from "express";
-import { isAuthorized } from "../Modles/UserAuthenticate.js";
+import { isAuthorized } from "../recycle/UserAuthenticate.js";
 import {
   createAdminTask,
   getAdminTask,

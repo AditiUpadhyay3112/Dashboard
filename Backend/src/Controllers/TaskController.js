@@ -3,8 +3,6 @@ import { MasterclassTask } from "../Modles/MasterclassTaskModel.js";
 import { SocialTask } from "../Modles/SocialTaskModel.js";
 import { StudentTask } from "../Modles/StudentTaskModel.js";
 import { WorkshopTask } from "../Modles/WorkshopTaskModel.js";
-import { catchAsyncError } from "../Modles/catchAsyncError.js";
-import ErrorHandler from "../Modles/error.js";
 
 export const submitStudentTask = async (req, res) => {
   try {

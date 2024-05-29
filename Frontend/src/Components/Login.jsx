@@ -28,9 +28,8 @@ const Login = ({ H1 }) => {
           withCredentials: true,
         }
       );
-
-      navigate("/sportal");
-      toast.success("Logged in successfully");
+      localStorage.setItem("user", JSON.stringify(response.data.user));
+      window.location.reload();
     } catch (error) {
       console.log(error);
       toast.error(error.response.data.error);
