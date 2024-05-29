@@ -84,15 +84,10 @@ const StudentPortal = () => {
             case 'content3':
                 return (
                     <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
-                        <h2 className="text-white text-3xl md:text-5xl font-serif">Pending Task</h2>
-                    </div>
-                );
-            case 'content4':
-                return (
-                    <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
                         <h2 className="text-white text-3xl md:text-5xl font-serif">Feedback</h2>
                     </div>
                 );
+            
             default:
                 return null;
         }
@@ -113,11 +108,9 @@ const StudentPortal = () => {
                     <Card4 H1={"Weekly Tasks"} />
                 </div>
                 <div className="w-full" onClick={() => setActiveContent('content3')}>
-                    <Card4 H1={"Pending Tasks"} />
-                </div>
-                <div className="w-full" onClick={() => setActiveContent('content4')}>
                     <Card4 H1={"Feedback"} />
                 </div>
+                
             </div>
             {/* Main Content */}
             <div className="w-full md:w-4/5 z-50 p-2 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">

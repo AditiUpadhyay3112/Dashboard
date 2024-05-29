@@ -7,6 +7,7 @@ import Home from './Components/Home/Home.jsx'
 import StudentPortal from './Components/StudentPortal.jsx'
 import Contact from './Components/Contact.jsx'
 import Login from './Components/Login.jsx'
+import AdminPortal from './Components/AdminPortal.jsx'
 
 const router= createBrowserRouter([
   {
@@ -31,6 +32,11 @@ const router= createBrowserRouter([
       {
         path:"/contact",
         element:<Contact/>
+      
+      },
+      {
+        path:"/admin",
+        element:<AdminPortal/>
       
       },
       
