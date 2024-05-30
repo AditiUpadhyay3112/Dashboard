@@ -30,6 +30,7 @@ export const submitStudentTask = async (req, res) => {
       description,
       number,
       studentId,
+      studentName: req.user.name,
     });
 
     const findUser = await User.findById(req.user._id);
@@ -72,6 +73,7 @@ export const submitSocialTask = async (req, res) => {
       shares,
       followers,
       studentId,
+      studentName: req.user.name,
     });
 
     const findUser = await User.findById(req.user._id);
@@ -94,6 +96,8 @@ export const submitMasterclassTask = async (req, res) => {
     const { description, registrations } = req.body;
     const studentId = req.user._id;
 
+    console.log(registrations);
+
     const task = await AdminTask.findOne({});
 
     if (!task)
@@ -114,6 +118,7 @@ export const submitMasterclassTask = async (req, res) => {
       description,
       registrations,
       studentId,
+      studentName: req.user.name,
     });
 
     const findUser = await User.findById(req.user._id);
@@ -156,7 +161,10 @@ export const submitWorkshopTask = async (req, res) => {
       description,
       organization,
       studentId,
+      studentName: req.user.name,
     });
+
+    console.log(workshopTask);
 
     const findUser = await User.findById(req.user._id);
 
@@ -201,6 +209,52 @@ export const getAdminTask = async (req, res) => {
         .json({ error: "No Admin task assigned right now" });
 
     return res.status(200).json({ data: adminTask });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
+  }
+};
+
+export const getStudentTasks = async (req, res) => {
+  try {
+    const tasks = await StudentTask.find();
+
+    console.log(tasks);
+
+    return res.status(200).json({ tasks });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
+  }
+};
+
+export const getWorkshopTasks = async (req, res) => {
+  try {
+    const tasks = await WorkshopTask.find();
+
+    return res.status(200).json({ tasks });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
+  }
+};
+
+export const getSocialTasks = async (req, res) => {
+  try {
+    const tasks = await SocialTask.find();
+
+    return res.status(200).json({ tasks });
+  } catch (error) {
+    console.log(error);
+    return res.status(400).json({ error: error });
+  }
+};
+
+export const getMasterclassTasks = async (req, res) => {
+  try {
+    const tasks = await MasterclassTask.find();
+
+    return res.status(200).json({ tasks });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error });

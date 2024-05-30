@@ -15,6 +15,9 @@ const studentTaskSchema = new Schema({
   number: {
     type: Number,
   },
+  studentName: {
+    type: String,
+  },
 });
 
 export const StudentTask = mongoose.model("StudentTask", studentTaskSchema);

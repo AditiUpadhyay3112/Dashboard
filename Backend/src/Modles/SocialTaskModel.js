@@ -18,6 +18,9 @@ const socialTaskSchema = new Schema({
   followers: {
     type: Number,
   },
+  studentName: {
+    type: String,
+  },
 });
 
 export const SocialTask = mongoose.model("SocialTask", socialTaskSchema);
