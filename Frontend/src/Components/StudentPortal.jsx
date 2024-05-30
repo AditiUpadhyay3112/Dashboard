@@ -5,6 +5,7 @@ import Card4 from "./Cards/Card4";
 import { CgProfile } from "react-icons/cg";
 import SubmitTask from "./SubmitTask";
 import axios from "axios";
+import FeedbackForm from "./Forms/FeedbackForm";
 
 const StudentPortal = () => {
   const [activeContent, setActiveContent] = useState("content1");
@@ -87,9 +88,9 @@ const StudentPortal = () => {
         );
       case "content3":
         return (
-          <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
-            <h2 className="text-white text-3xl md:text-5xl font-serif">
-              Feedback
+          <div className="col-span-2 ">
+            <h2 className="text-white text-lg  md:text-xl font-serif">
+             <FeedbackForm/>
             </h2>
           </div>
         );

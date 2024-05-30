@@ -52,17 +52,6 @@ function SubmitTask() {
     setTaskDescription(e.target.value);
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (taskDescription && file) {
-      console.log("Task Description:", taskDescription);
-      console.log("File:", file);
-      alert("Task submitted!");
-    } else {
-      alert("Please enter a task description and upload an image.");
-    }
-  };
-
   const handleTaskOptionChange = (event) => {
     setTaskOption(event.target.value);
   };
@@ -90,27 +79,27 @@ function SubmitTask() {
         </ul>
       </div>
 
-      <div className="p-10 rounded-lg w-full bg-[#6c4869] shadow-2xl mt-14 shadow-black border border-[#ff9634]">
+      <div className="px-10 py-12 rounded-lg w-full  gap-6 grid grid-cols-2 bg-[#6c4869] shadow-2xl mt-6 shadow-black border border-[#ff9634]">
         <button
-          className="border ml-4 p-4 border-black bg-[#ff9634]"
+          className="border rounded-lg shadow-lg shadow-black px-4 py-8 border-black bg-[#ff9634]"
           onClick={() => toggleBox("studentAdded")}
         >
-          Student Added
+          Student Added 
         </button>
         <button
-          className="border p-4 ml-4 border-black bg-[#ff9634]"
+          className="border rounded-lg shadow-lg shadow-black px-4 py-8  border-black bg-[#ff9634]"
           onClick={() => toggleBox("workshop")}
         >
           Workshop Organized
         </button>
         <button
-          className="border p-4 ml-4 border-black bg-[#ff9634]"
+          className="border rounded-lg shadow-lg shadow-black px-4 py-8 border-black bg-[#ff9634]"
           onClick={() => toggleBox("socialMedia")}
         >
           Social Media
         </button>
         <button
-          className="border p-4 ml-4 border-black bg-[#ff9634]"
+          className="border rounded-lg shadow-lg shadow-black px-4 py-8 border-black bg-[#ff9634]"
           onClick={() => toggleBox("masterclass")}
         >
           Masterclass

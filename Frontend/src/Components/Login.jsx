@@ -67,7 +67,7 @@ const Login = ({ H1 }) => {
                 <button
                   onClick={() => setIsAdminLogin(false)}
                   className={`py-2 px-4 rounded-t-md ${
-                    !isAdminLogin ? "bg-[#ffa719] text-white" : "bg-transparent text-[#ffa71a] border border-[#ffa71a]"
+                    !isAdminLogin ? "bg-[#ffa719] scale-125  text-white" : " bg-transparent text-[#ffa71a] border border-[#ffa71a]"
                   }`}
                 >
                   User Login
@@ -75,7 +75,7 @@ const Login = ({ H1 }) => {
                 <button
                   onClick={() => setIsAdminLogin(true)}
                   className={`py-2 px-4 rounded-t-md ${
-                    isAdminLogin ? "bg-[#ffa719] text-white" : "bg-transparent text-[#ffa71a] border border-[#ffa71a]"
+                    isAdminLogin ? "bg-[#ffa719] scale-125  text-white" : "bg-transparent text-[#ffa71a] border border-[#ffa71a]"
                   }`}
                 >
                   Admin Login
@@ -87,7 +87,9 @@ const Login = ({ H1 }) => {
                   setUserDetail({ ...userDetail, username: e.target.value })
                 }
                 placeholder="Username"
-                className=" absolute cursor-default md:top-48 top-20 z-50 rounded-md md:left-72 left-40 md:w-[40%] w-[30%] md:text-xl text-xs font-serif border-b-2 text-center border-b-[#ffa71a] bg-transparent placeholder:text-[#ffa71a] py-2 text-[#ffa71a] shadow-xl shadow-[#060606c2]"
+                className={` absolute cursor-default md:top-48 top-20 z-50 rounded-md md:left-72 left-40 md:w-[40%] w-[30%] md:text-xl text-xs font-serif border-b-2 text-center border-b-[#ffa71a] bg-transparent placeholder:text-[#ffa71a] py-2 text-[#ffa71a] shadow-xl shadow-[#060606c2] ${
+                  isAdminLogin ? "bg-[#ffb13480] placeholder:text-white " : "bg-transparent"
+                } `}
 
               />
               <input
@@ -96,7 +98,10 @@ const Login = ({ H1 }) => {
                   setUserDetail({ ...userDetail, password: e.target.value })
                 }
                 placeholder="Password"
-                className="absolute cursor-default md:top-72 top-32 z-50 md:left-72 left-40 rounded-md md:w-[40%] w-[30%] md:text-xl text-xs font-serif border-b-2 text-center border-b-[#ffa71a] bg-transparent placeholder:text-[#ffa71a] py-2 text-[#ffa71a] shadow-xl shadow-[#060606c2]"
+                className={`absolute cursor-default md:top-72 top-32 z-50 md:left-72 left-40 rounded-md md:w-[40%] w-[30%] md:text-xl text-xs font-serif border-b-2 text-center border-b-[#ffa71a] bg-transparent placeholder:text-[#ffa71a] py-2 text-[#ffa71a] shadow-xl shadow-[#060606c2]
+                ${
+                  isAdminLogin ? "bg-[#ffb13480] placeholder:text-white " : "bg-transparent"
+                }`}
               />
               <div className="absolute md:top-96 top-44 md:left-[390px] left-44 text-[#ffa71a] hover:text-[#ff8555] cursor-pointer">
                 <button onClick={handleLogin}>
