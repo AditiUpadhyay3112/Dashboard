@@ -33,7 +33,8 @@ const StudentPortal = () => {
         return (
           <>
             <div className="rounded-lg h-[200px] md:h-[300px] bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634] relative">
-              <img src={img1} className="w-40 md:w-80 absolute z-50" alt="" />
+              <img src={img1} className="w-40 ml-10 md:w-80  z-50" alt="" />
+              {/* <h1 className="mt-4 flex justify-center items-center  text-3xl uppercase text-[#ffa71a] font-bold font-serif ">{user.name}</h1> */}
             </div>
             <div className="rounded-lg h-[200px] md:h-[300px]  bg-[#6c4869] border px-2 md:px-4 py-2 md:py-4 border-[#ff9634] shadow-2xl shadow-black">
               <div className="shadow-xl shadow-black py-2 rounded-lg">
@@ -88,18 +89,11 @@ const StudentPortal = () => {
         return (
           <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
             <h2 className="text-white text-3xl md:text-5xl font-serif">
-              Pending Task
-            </h2>
-          </div>
-        );
-      case "content4":
-        return (
-          <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
-            <h2 className="text-white text-3xl md:text-5xl font-serif">
               Feedback
             </h2>
           </div>
         );
+      
       default:
         return null;
     }
@@ -113,18 +107,16 @@ const StudentPortal = () => {
         <div className="w-16 h-16 z-50 bg-white rounded-full flex items-center justify-center mb-6">
           <CgProfile size={80} color="#f5b041" />
         </div>
-        <div className="w-full" onClick={() => setActiveContent("content1")}>
+        <div className="w-full h-40 " onClick={() => setActiveContent("content1")}>
           <Card4 H1={"Performance Review"} />
         </div>
-        <div className="w-full" onClick={() => setActiveContent("content2")}>
+        <div className="w-full h-40 mt-6" onClick={() => setActiveContent("content2")}>
           <Card4 H1={"Weekly Tasks"} />
         </div>
-        <div className="w-full" onClick={() => setActiveContent("content3")}>
-          <Card4 H1={"Pending Tasks"} />
-        </div>
-        <div className="w-full" onClick={() => setActiveContent("content4")}>
+        <div className="w-full h-40 mt-6" onClick={() => setActiveContent("content3")}>
           <Card4 H1={"Feedback"} />
         </div>
+     
       </div>
       {/* Main Content */}
       <div className="w-full md:w-4/5 z-50 p-2 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">

@@ -72,7 +72,7 @@ const Header = () => {
               to={"/sportal"}
               className="flex items-center text-white font-serif font-semibold md:text-2xl text-lg hover:text-[#f6cf95]"
             >
-              {user && <span className="mr-2">{user.name}</span>}
+              {user && <span className="mr-2 uppercase">{user.name}</span>}
               <CgProfile size={40} />
             </NavLink>
             <IoLogOutOutline
