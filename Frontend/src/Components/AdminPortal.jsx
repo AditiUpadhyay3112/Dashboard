@@ -7,6 +7,8 @@ import SubmitTask from "./SubmitTask";
 import axios from "axios";
 import AddUser from "./Forms/AddUser";
 import AddTasks from "./Forms/AddTasks";
+import ViewTasks from "./ViewTask";
+import ViewFeedback from "./ViewFeedback";
 
 const AdminPortal = () => {
   const [activeContent, setActiveContent] = useState("content1");
@@ -15,29 +17,27 @@ const AdminPortal = () => {
     switch (activeContent) {
       case "content1":
         return (
-          <div className="rounded-lg  col-span-2 bg-[#6c486900]">
+          <div className="  col-span-2 ">
             <AddUser />
           </div>
         );
       case "content2":
         return (
-          <div className="rounded-lg col-span-2 bg-[#6c486900]  ">
+          <div className=" col-span-2   ">
             <AddTasks />
           </div>
         );
       case "content3":
         return (
-          <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
-            <h2 className="text-white text-3xl md:text-5xl font-serif">
-              View Tasks
-            </h2>
+          <div className=" col-span-2 ">
+            <ViewTasks/>
           </div>
         );
         case "content4":
         return (
-          <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
-            <h2 className="text-white text-3xl md:text-5xl font-serif">
-              Feedback
+          <div className="col-span-2 ">
+            <h2 className="text-white text-lg md:text-xl font-serif">
+              <ViewFeedback/>
             </h2>
           </div>
         )
