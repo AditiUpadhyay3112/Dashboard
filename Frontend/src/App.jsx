@@ -7,35 +7,36 @@ import AdminPortal from "./Components/AdminPortal";
 import { useEffect, useState } from "react";
 import Login from "./Components/Login";
 import { Toaster } from "react-hot-toast";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ProtectedRoute from "./ProtectedRoute";
 
 function App() {
   const [user, setUser] = useState(null);
+  const queryClient = new QueryClient();
 
-  useEffect(() => {
-    setUser(localStorage.getItem("user"));
-  }, []);
+  // useEffect(() => {
+  //   setUser(localStorage.getItem("user"));
+  // }, []);
 
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Toaster position="top-center" />
       <Routes>
-        <Route path="" element={<Layout />}>
-          <Route
-            path="/"
-            element={user ? <Home /> : <Navigate to="/login" />}
-          />
-          <Route
-            path="/sportal"
-            element={user ? <StudentPortal /> : <Navigate to="/login" />}
-          />
-        </Route>
         <Route
-          path="/login"
-          element={!user ? <Login /> : <Navigate to="/" />}
-        />
+          path=""
+          element={
+            <ProtectedRoute>
+              <Layout />
+            </ProtectedRoute>
+          }
+        >
+          <Route path="/" element={<Home />} />
+          <Route path="/sportal" element={<StudentPortal />} />
+        </Route>
+        <Route path="/login" element={<Login />} />
         <Route path="/admin" element={<AdminPortal />} />
       </Routes>
-    </>
+    </QueryClientProvider>
   );
 }
 

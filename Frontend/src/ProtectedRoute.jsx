@@ -1,29 +1,21 @@
-import axios from "axios";
-import React, { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import useCurrentStudent from "./hooks/useCurrentStudent";
 
-const ProtectedRoute = ({ children }) => {
+export default function ProtectedRoute({ children }) {
+  const { student, isLoading, isAuthenticated } = useCurrentStudent();
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const getUser = () => {
-      setUser(localStorage.getItem("user"));
-    };
-
-    getUser();
-  }, []);
 
   useEffect(
     function () {
-      if (!user) {
+      if (!isLoading && !student) {
         navigate("/login");
       }
     },
-    [user, navigate]
+    [student, isLoading, navigate]
   );
 
-  if (user) return children;
-};
+  if (isLoading) return null;
 
-export default ProtectedRoute;
+  if (student) return children;
+}

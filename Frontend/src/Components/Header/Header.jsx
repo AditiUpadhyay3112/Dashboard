@@ -5,43 +5,36 @@ import { CgProfile } from "react-icons/cg";
 import axios from "axios";
 import { IoLogOutOutline } from "react-icons/io5";
 import { toast } from "react-hot-toast";
+import useLogoutUser from "../../hooks/useLogoutUser";
+import useCurrentStudent from "../../hooks/useCurrentStudent";
 
 const Header = () => {
   const [user, setUser] = useState(null);
   const navigate = useNavigate();
+  const { logoutStudent, isLoggingOut } = useLogoutUser();
+  const { student, isLoading } = useCurrentStudent();
 
-  useEffect(() => {
-    const getUser = async () => {
-      try {
-        const response = await axios.get(
-          "http://localhost:3000/api/currentUser",
-          { withCredentials: true }
-        );
-        setUser(response.data.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
+  // useEffect(() => {
+  //   const getUser = async () => {
+  //     try {
+  //       const response = await axios.get(
+  //         "http://localhost:3000/api/currentUser",
+  //         { withCredentials: true }
+  //       );
+  //       setUser(response.data.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
 
-    getUser();
-  }, []);
+  //   getUser();
+  // }, []);
 
-  const handleLogout = async () => {
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/logout",
-        {},
-        {
-          withCredentials: true,
-        }
-      );
+  function handleLogout() {
+    logoutStudent();
+  }
 
-      window.location.reload();
-      localStorage.removeItem("user");
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  if (isLoading) return null;
 
   return (
     <div>
@@ -72,7 +65,7 @@ const Header = () => {
               to={"/sportal"}
               className="flex items-center text-white font-serif font-semibold md:text-2xl text-lg hover:text-[#f6cf95]"
             >
-              {user && <span className="mr-2 uppercase">{user.name}</span>}
+              <span className="mr-2 uppercase">{student.name}</span>
               <CgProfile size={40} />
             </NavLink>
             <IoLogOutOutline

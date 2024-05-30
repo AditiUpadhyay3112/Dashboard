@@ -7,6 +7,7 @@ import gif from "../Images/gif.gif";
 import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import useLoginUser from "../hooks/useLoginUser";
 
 const Login = ({ H1 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -16,25 +17,10 @@ const Login = ({ H1 }) => {
     password: "",
   });
   const navigate = useNavigate();
+  const { loginStudent, isLogging } = useLoginUser();
 
-  const handleLogin = async () => {
-    const endpoint = isAdminLogin
-      ? "http://localhost:3000/api/admin/login"
-      : "http://localhost:3000/api/login";
-    
-    try {
-      const response = await axios.post(endpoint, userDetail, {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        withCredentials: true,
-      });
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      window.location.reload();
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.error);
-    }
+  const handleLogin = () => {
+    loginStudent(userDetail);
   };
 
   const handleForgotPasswordClick = () => {
@@ -61,13 +47,13 @@ const Login = ({ H1 }) => {
               className="absolute left-10 bottom-1 w-[55%] z-50"
             />
             <div className="w-[65%] h-[250px] md:h-[500px] bg-[#f4e7d6] absolute right-0 md:rounded-bl-3xl rounded-tr-3xl rounded-tl-3xl md:rounded-tl-3xl md:rounded shadow-2xl shadow-black">
-          
-              
               <div className="absolute top-16 left-[417px] transform -translate-x-1/2 flex ">
                 <button
                   onClick={() => setIsAdminLogin(false)}
                   className={`py-2 px-4 rounded-t-md ${
-                    !isAdminLogin ? "bg-[#ffa719] text-white" : "bg-transparent text-[#ffa71a] border border-[#ffa71a]"
+                    !isAdminLogin
+                      ? "bg-[#ffa719] text-white"
+                      : "bg-transparent text-[#ffa71a] border border-[#ffa71a]"
                   }`}
                 >
                   User Login
@@ -75,7 +61,9 @@ const Login = ({ H1 }) => {
                 <button
                   onClick={() => setIsAdminLogin(true)}
                   className={`py-2 px-4 rounded-t-md ${
-                    isAdminLogin ? "bg-[#ffa719] text-white" : "bg-transparent text-[#ffa71a] border border-[#ffa71a]"
+                    isAdminLogin
+                      ? "bg-[#ffa719] text-white"
+                      : "bg-transparent text-[#ffa71a] border border-[#ffa71a]"
                   }`}
                 >
                   Admin Login
@@ -88,7 +76,6 @@ const Login = ({ H1 }) => {
                 }
                 placeholder="Username"
                 className=" absolute cursor-default md:top-48 top-20 z-50 rounded-md md:left-72 left-40 md:w-[40%] w-[30%] md:text-xl text-xs font-serif border-b-2 text-center border-b-[#ffa71a] bg-transparent placeholder:text-[#ffa71a] py-2 text-[#ffa71a] shadow-xl shadow-[#060606c2]"
-
               />
               <input
                 type="password"

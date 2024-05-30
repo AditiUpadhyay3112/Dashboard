@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import useRegisterStudent from "../../hooks/useRegisterStudent";
 
 const AddUser = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const AddUser = () => {
     username: "",
     password: "",
   });
+  const { registerStudent, isRegistering } = useRegisterStudent();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,21 +19,10 @@ const AddUser = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const response = await axios.post(
-        "http://localhost:3000/api/register",
-        formData,
-        { withCredentials: true }
-      );
-
-      toast.success(response.data.message);
-    } catch (error) {
-      console.log(error);
-      toast.error(error.response.data.error);
-    }
-  };
+    registerStudent(formData);
+  }
 
   return (
     <div className="py-24 md:px-60 px-24 rounded-lg w-full text-center bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634]">

@@ -40,7 +40,7 @@ export const submitStudentTask = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "Task Added Successfully", data: studentTask });
+      .json({ message: "Task Submitted Successfully", data: studentTask });
   } catch (error) {
     return res.status(400).json({ error: error });
   }
@@ -82,7 +82,7 @@ export const submitSocialTask = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "Task Added Successfully", data: socialTask });
+      .json({ message: "Task Submitted Successfully", data: socialTask });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error });
@@ -124,7 +124,7 @@ export const submitMasterclassTask = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "Task Added Successfully", data: masterclassTask });
+      .json({ message: "Task Submitted Successfully", data: masterclassTask });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error });
@@ -166,7 +166,7 @@ export const submitWorkshopTask = async (req, res) => {
 
     return res
       .status(200)
-      .json({ message: "Task Added Successfully", data: workshopTask });
+      .json({ message: "Task Submitted Successfully", data: workshopTask });
   } catch (error) {
     console.log(error);
     return res.status(400).json({ error: error });

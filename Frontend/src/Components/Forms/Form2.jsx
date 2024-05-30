@@ -2,31 +2,27 @@ import React, { useState } from "react";
 import { FaImage, FaUpload } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import useSubmitStudentTask from "../../hooks/useSubmitStudentTask";
 
 const Form2 = () => {
   const [file, setFile] = useState(null);
   const [taskDescription, setTaskDescription] = useState("");
   const [NameofOzrganization, setNameofOzrganization] = useState("");
+  const { submitStudentTask, isSubmitting } = useSubmitStudentTask();
 
-  const handleSubmit = async (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const data = {
-        description: taskDescription,
-        organization: NameofOzrganization,
-      };
 
-      const response = await axios.post(
-        "http://localhost:3000/task/workshop",
-        data,
-        { withCredentials: true }
-      );
+    const data = {
+      description: taskDescription,
+      organization: NameofOzrganization,
+    };
 
-      toast.success(response.data.message);
-    } catch (error) {
-      toast.error(error.response.data.error);
-    }
-  };
+    const taskDetail = { data, taskCategory: "workshop" };
+
+    submitStudentTask(taskDetail);
+  }
+
   const handleTaskChange = (e) => {
     setTaskDescription(e.target.value);
   };

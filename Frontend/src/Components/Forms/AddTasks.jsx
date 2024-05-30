@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 import { toast } from "react-hot-toast";
+import useCreateAdminTask from "../../hooks/useCreateAdminTask";
 
 const AddTasks = () => {
   const [formData, setFormData] = useState({
@@ -8,6 +9,7 @@ const AddTasks = () => {
     TaskDescription: "",
     SubmissionDate: "",
   });
+  const { createAdminTask, isCreating } = useCreateAdminTask();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,26 +19,15 @@ const AddTasks = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    try {
-      console.log(formData);
-      const data = {
-        title: formData.title,
-        description: formData.TaskDescription,
-        date: formData.SubmissionDate,
-      };
-
-      const response = await axios.post(
-        "http://localhost:3000/task/admin",
-        data,
-        { withCredentials: true }
-      );
-      toast.success(response.data.message);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+    const data = {
+      title: formData.title,
+      description: formData.TaskDescription,
+      date: formData.SubmissionDate,
+    };
+    createAdminTask(data);
+  }
 
   return (
     <div className="py-24 md:px-60 px-24 rounded-lg w-full text-center bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634]">

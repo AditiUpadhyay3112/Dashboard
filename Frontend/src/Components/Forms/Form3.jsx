@@ -2,33 +2,29 @@ import React, { useState } from "react";
 import { FaImage, FaUpload } from "react-icons/fa";
 import { toast } from "react-hot-toast";
 import axios from "axios";
+import useSubmitStudentTask from "../../hooks/useSubmitStudentTask";
 
 const Form3 = () => {
   const [file, setFile] = useState(null);
   const [taskDescription, setTaskDescription] = useState("");
   const [NumberofShares, setNumberofShares] = useState("");
   const [NumberofFollowers, setNumberofFollowers] = useState("");
+  const { submitStudentTask, isSubmitting } = useSubmitStudentTask();
 
-  const handleSubmit = async (e) => {
+  function handleSubmit(e) {
     e.preventDefault();
-    try {
-      const data = {
-        description: taskDescription,
-        shares: NumberofShares,
-        followers: NumberofFollowers,
-      };
 
-      const response = await axios.post(
-        "http://localhost:3000/task/social",
-        data,
-        { withCredentials: true }
-      );
+    const data = {
+      description: taskDescription,
+      shares: NumberofShares,
+      followers: NumberofFollowers,
+    };
 
-      toast.success(response.data.message);
-    } catch (error) {
-      toast.error(error.response.data.error);
-    }
-  };
+    const taskDetail = { data, taskCategory: "social" };
+
+    submitStudentTask(taskDetail);
+  }
+
   const handleTaskChange = (e) => {
     setTaskDescription(e.target.value);
   };
