@@ -29,10 +29,18 @@ const AdminPortal = () => {
         return (
           <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
             <h2 className="text-white text-3xl md:text-5xl font-serif">
-              Feedback
+              View Tasks
             </h2>
           </div>
         );
+        case "content4":
+        return (
+          <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-3 py-4 shadow-2xl shadow-black">
+            <h2 className="text-white text-3xl md:text-5xl font-serif">
+              Feedback
+            </h2>
+          </div>
+        )
 
       default:
         return null;
@@ -47,13 +55,16 @@ const AdminPortal = () => {
         <div className="w-16 h-16 z-50 bg-white rounded-full flex items-center justify-center mb-6">
           <CgProfile size={80} color="#f5b041" />
         </div>
-        <div className="w-full" onClick={() => setActiveContent("content1")}>
+        <div className="w-full h-28 " onClick={() => setActiveContent("content1")}>
           <Card4 H1={"Add Student"} />
         </div>
-        <div className="w-full" onClick={() => setActiveContent("content2")}>
+        <div className="w-full h-28 mt-6" onClick={() => setActiveContent("content2")}>
           <Card4 H1={"Add Tasks"} />
         </div>
-        <div className="w-full" onClick={() => setActiveContent("content3")}>
+        <div className="w-full h-28 mt-6" onClick={() => setActiveContent("content3")}>
+          <Card4 H1={"View Tasks"} />
+        </div>
+        <div className="w-full h-28 mt-6" onClick={() => setActiveContent("content4")}>
           <Card4 H1={"Feedbacks"} />
         </div>
       </div>
