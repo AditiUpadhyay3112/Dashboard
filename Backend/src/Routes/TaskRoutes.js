@@ -3,6 +3,10 @@ import { isAuthorized } from "../recycle/UserAuthenticate.js";
 import {
   createAdminTask,
   getAdminTask,
+  getMasterclassTasks,
+  getSocialTasks,
+  getStudentTasks,
+  getWorkshopTasks,
   submitMasterclassTask,
   submitSocialTask,
   submitStudentTask,
@@ -19,5 +23,9 @@ router.post("/masterclass", submitMasterclassTask);
 router.post("/workshop", submitWorkshopTask);
 router.post("/admin", createAdminTask);
 router.get("/admin", getAdminTask);
+router.get("/student", getStudentTasks);
+router.get("/social", getSocialTasks);
+router.get("/workshop", getWorkshopTasks);
+router.get("/masterclass", getMasterclassTasks);
 
 export default router;

@@ -30,3 +30,18 @@ export async function submitStudentTask(taskDetail) {
     throw error.response.data.error;
   }
 }
+
+export async function getStudentTask(taskCategory) {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/task/${taskCategory}`,
+      { withCredentials: true }
+    );
+
+    console.log(response.data.tasks);
+    return response.data.tasks;
+  } catch (error) {
+    console.log(error);
+    return null;
+  }
+}

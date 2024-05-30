@@ -15,6 +15,9 @@ const masterclassTaskSchema = new Schema({
   registrations: {
     type: Number,
   },
+  studentName: {
+    type: String,
+  },
 });
 
 export const MasterclassTask = mongoose.model(

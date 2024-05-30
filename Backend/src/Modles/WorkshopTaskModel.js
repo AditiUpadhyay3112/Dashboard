@@ -15,6 +15,9 @@ const workshopTaskSchema = new Schema({
   organization: {
     type: String,
   },
+  studentName: {
+    type: String,
+  },
 });
 
 export const WorkshopTask = mongoose.model("WorkshopTask", workshopTaskSchema);

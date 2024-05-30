@@ -18,7 +18,7 @@ const Form4 = () => {
       registrations: NumberofRegistrations,
     };
 
-    const taskDetail = { data, taskCategory: "workshop" };
+    const taskDetail = { data, taskCategory: "masterclass" };
 
     submitStudentTask(taskDetail);
   }
