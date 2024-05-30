@@ -54,7 +54,7 @@ const ViewTasks = () => {
 
       {openBox === "workshop" && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="relative p-10 rounded-lg w-4/5 bg-[#ffeedf] shadow-2xl">
+          <div className="relative p-10 rounded-lg w-4/5 bg-[#ffeedf]  shadow-2xl">
             <button
               className="absolute top-2 right-2"
               onClick={() => setOpenBox(null)}
