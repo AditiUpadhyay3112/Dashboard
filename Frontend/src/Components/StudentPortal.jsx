@@ -27,6 +27,8 @@ const StudentPortal = () => {
     getUser();
   }, []);
 
+  if (!user) return null;
+
   const renderContent = () => {
     switch (activeContent) {
       case "content1":
@@ -47,7 +49,7 @@ const StudentPortal = () => {
                     Students Added
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    1
+                    {user.studentPoints}
                   </th>
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
@@ -55,7 +57,7 @@ const StudentPortal = () => {
                     Workshops Organised
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    2
+                    {user.workshopPoints}
                   </th>
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
@@ -63,7 +65,7 @@ const StudentPortal = () => {
                     Social Media
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    3
+                    {user.socialPoints}
                   </th>
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
@@ -71,7 +73,7 @@ const StudentPortal = () => {
                     Masterclass
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    4
+                    {user.masterclassPoints}
                   </th>
                 </tr>
               </table>

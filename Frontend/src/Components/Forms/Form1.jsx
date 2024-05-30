@@ -2,11 +2,13 @@ import axios from "axios";
 import React, { useState } from "react";
 import { FaImage, FaUpload } from "react-icons/fa";
 import { toast } from "react-hot-toast";
+import { Navigate, useNavigate } from "react-router-dom";
 
 const Form1 = () => {
   const [file, setFile] = useState(null);
   const [taskDescription, setTaskDescription] = useState("");
   const [NumberofStudents, setNumberofStudents] = useState("");
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -24,6 +26,7 @@ const Form1 = () => {
       );
 
       toast.success(response.data.message);
+      navigate("/sportal");
     } catch (error) {
       toast.error(error.response.data.error);
     }

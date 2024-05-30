@@ -19,9 +19,15 @@ function App() {
     <>
       <Toaster position="top-center" />
       <Routes>
-        <Route path="/" element={user ? <Layout /> : <Navigate to="/login" />}>
-          <Route path="" element={<Home />} />
-          <Route path="sportal" element={<StudentPortal />} />
+        <Route path="" element={<Layout />}>
+          <Route
+            path="/"
+            element={user ? <Home /> : <Navigate to="/login" />}
+          />
+          <Route
+            path="/sportal"
+            element={user ? <StudentPortal /> : <Navigate to="/login" />}
+          />
         </Route>
         <Route
           path="/login"

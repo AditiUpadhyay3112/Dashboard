@@ -19,7 +19,22 @@ const UserSchema = new mongoose.Schema({
     minLength: [3, "Password must be contain at least 8 characters"],
     maxLength: [30, "Password can't exceed 32 characters"],
   },
-
+  studentPoints: {
+    type: Number,
+    default: 0,
+  },
+  workshopPoints: {
+    type: Number,
+    default: 0,
+  },
+  masterclassPoints: {
+    type: Number,
+    default: 0,
+  },
+  socialPoints: {
+    type: Number,
+    default: 0,
+  },
   createdAt: {
     type: Date,
     default: Date.now,

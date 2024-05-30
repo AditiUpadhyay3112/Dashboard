@@ -2,6 +2,7 @@ import { AdminTask } from "../Modles/AdminTaskModel.js";
 import { MasterclassTask } from "../Modles/MasterclassTaskModel.js";
 import { SocialTask } from "../Modles/SocialTaskModel.js";
 import { StudentTask } from "../Modles/StudentTaskModel.js";
+import { User } from "../Modles/UserModel.js";
 import { WorkshopTask } from "../Modles/WorkshopTaskModel.js";
 
 export const submitStudentTask = async (req, res) => {
@@ -29,6 +30,12 @@ export const submitStudentTask = async (req, res) => {
       description,
       number,
       studentId,
+    });
+
+    const findUser = await User.findById(req.user._id);
+
+    await User.findByIdAndUpdate(findUser._id, {
+      studentPoints: findUser.studentPoints + Number(number),
     });
 
     return res
@@ -67,6 +74,12 @@ export const submitSocialTask = async (req, res) => {
       studentId,
     });
 
+    const findUser = await User.findById(req.user._id);
+
+    await User.findByIdAndUpdate(findUser._id, {
+      socialPoints: findUser.socialPoints + Number(shares) + Number(followers),
+    });
+
     return res
       .status(200)
       .json({ message: "Task Added Successfully", data: socialTask });
@@ -103,6 +116,12 @@ export const submitMasterclassTask = async (req, res) => {
       studentId,
     });
 
+    const findUser = await User.findById(req.user._id);
+
+    await User.findByIdAndUpdate(findUser._id, {
+      masterclassPoints: findUser.masterclassPoints + Number(registrations),
+    });
+
     return res
       .status(200)
       .json({ message: "Task Added Successfully", data: masterclassTask });
@@ -137,6 +156,12 @@ export const submitWorkshopTask = async (req, res) => {
       description,
       organization,
       studentId,
+    });
+
+    const findUser = await User.findById(req.user._id);
+
+    await User.findByIdAndUpdate(findUser._id, {
+      workshopPoints: findUser.workshopPoints + 1,
     });
 
     return res
