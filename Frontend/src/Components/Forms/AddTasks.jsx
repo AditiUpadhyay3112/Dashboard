@@ -30,7 +30,7 @@ const AddTasks = () => {
   }
 
   return (
-    <div className="py-24 md:px-60 px-24 rounded-lg w-full text-center bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634]">
+    <div className="py-24 md:px-60 h-screen px-24 rounded-lg w-full text-center bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634]">
       <div className="w-full max-w-md  p-8 rounded-lg shadow-xl shadow-black">
         <h2 className="text-3xl font-bold mb-6 text-center text-[#f5b041]">
           Add Tasks

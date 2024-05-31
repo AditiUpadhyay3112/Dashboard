@@ -35,8 +35,8 @@ const AdminPortal = () => {
         );
         case "content4":
         return (
-          <div className="col-span-2 ">
-            <h2 className="text-white text-lg md:text-xl font-serif">
+          <div className="col-span-2  ">
+            <h2 className="text-white text-lg md:text-xl  font-serif">
               <ViewFeedback/>
             </h2>
           </div>
@@ -50,8 +50,7 @@ const AdminPortal = () => {
   return (
     <div className="flex flex-col md:flex-row bg-gradient-to-r py-10 from-[#be38ac] via-[#894bbf] to-[#002a94] relative">
       <div className="absolute top-0 left-0 w-full h-full bg-[#000000a0]"></div>
-      {/* Sidebar */}
-      <div className="w-full md:w-1/5 z-50 bg-[#6c4869] border border-[#ff9634] rounded-b-xl md:rounded-r-xl md:rounded-b-none flex flex-col items-center py-6 px-4">
+      <div className="w-full md:w-1/5 z-50 h-screen bg-[#6c4869] border border-[#ff9634] rounded-b-xl md:rounded-r-xl md:rounded-b-none flex flex-col items-center py-6 px-4">
         <div className="w-16 h-16 z-50 bg-white rounded-full flex items-center justify-center mb-6">
           <CgProfile size={80} color="#f5b041" />
         </div>

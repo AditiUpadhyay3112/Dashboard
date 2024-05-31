@@ -46,16 +46,16 @@ const Header = () => {
           </div>
           <div className="absolute md:top-6 top-4 left-40 md:left-60">
             <ul className="flex text-white font-serif font-semibold md:text-2xl text-lg justify-center">
-              <NavLink>
+              <NavLink to={'/'}>
                 <li className="mx-4 hover:text-[#f6cf95]">Home</li>
               </NavLink>
-              <NavLink>
+              <NavLink to={'/sportal'}>
                 <li className="mx-4 hover:text-[#f6cf95]">Review</li>
               </NavLink>
-              <NavLink>
+              <NavLink to={'/sportal'}>
                 <li className="mx-4 hover:text-[#f6cf95]">Tasks</li>
               </NavLink>
-              <NavLink to={"/contact"}>
+              <NavLink to={"/sportal"}>
                 <li className="mx-4 hover:text-[#f6cf95]">Feedback</li>
               </NavLink>
             </ul>

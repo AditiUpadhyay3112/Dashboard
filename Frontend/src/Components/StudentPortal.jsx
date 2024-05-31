@@ -6,33 +6,27 @@ import { CgProfile } from "react-icons/cg";
 import SubmitTask from "./SubmitTask";
 import axios from "axios";
 import FeedbackForm from "./Forms/FeedbackForm";
-import useCurrentStudent from "../hooks/useCurrentStudent";
 
 const StudentPortal = () => {
   const [activeContent, setActiveContent] = useState("content1");
   const [user, setUser] = useState(null);
-  const { student, isLoading } = useCurrentStudent();
 
-  // useEffect(() => {
-  //   const getUser = async () => {
-  //     try {
-  //       const response = await axios.get(
-  //         "http://localhost:3000/api/currentUser",
-  //         { withCredentials: true }
-  //       );
-  //       // console.log(response.data.data);
-  //       setUser(response.data.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
+  useEffect(() => {
+    const getUser = async () => {
+      try {
+        const response = await axios.get(
+          "http://localhost:3000/api/currentUser",
+          { withCredentials: true }
+        );
+        // console.log(response.data.data);
+        setUser(response.data.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
 
-  //   getUser();
-  // }, []);
-
-  // if (!user) return null;
-
-  if (isLoading) return null;
+    getUser();
+  }, []);
 
   const renderContent = () => {
     switch (activeContent) {
@@ -55,7 +49,7 @@ const StudentPortal = () => {
                     Students Added
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    {student.studentPoints}
+                    1
                   </th>
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
@@ -63,7 +57,7 @@ const StudentPortal = () => {
                     Workshops Organised
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    {student.workshopPoints}
+                    2
                   </th>
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
@@ -71,7 +65,7 @@ const StudentPortal = () => {
                     Social Media
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    {student.socialPoints}
+                    3
                   </th>
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
@@ -79,7 +73,7 @@ const StudentPortal = () => {
                     Masterclass
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    {student.masterclassPoints}
+                    4
                   </th>
                 </tr>
               </table>
@@ -95,12 +89,12 @@ const StudentPortal = () => {
       case "content3":
         return (
           <div className="col-span-2 ">
-            <h2 className="text-white text-lg  md:text-xl font-serif">
-              <FeedbackForm />
+            <h2 className="text-white text-lg md:text-xl font-serif">
+             <FeedbackForm/>
             </h2>
           </div>
         );
-
+      
       default:
         return null;
     }
@@ -114,24 +108,16 @@ const StudentPortal = () => {
         <div className="w-16 h-16 z-50 bg-white rounded-full flex items-center justify-center mb-6">
           <CgProfile size={80} color="#f5b041" />
         </div>
-        <div
-          className="w-full h-40 "
-          onClick={() => setActiveContent("content1")}
-        >
+        <div className="w-full h-40 " onClick={() => setActiveContent("content1")}>
           <Card4 H1={"Performance Review"} />
         </div>
-        <div
-          className="w-full h-40 mt-6"
-          onClick={() => setActiveContent("content2")}
-        >
+        <div className="w-full h-40 mt-6" onClick={() => setActiveContent("content2")}>
           <Card4 H1={"Weekly Tasks"} />
         </div>
-        <div
-          className="w-full h-40 mt-6"
-          onClick={() => setActiveContent("content3")}
-        >
+        <div className="w-full h-40 mt-6" onClick={() => setActiveContent("content3")}>
           <Card4 H1={"Feedback"} />
         </div>
+     
       </div>
       {/* Main Content */}
       <div className="w-full md:w-4/5 z-50 p-2 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
