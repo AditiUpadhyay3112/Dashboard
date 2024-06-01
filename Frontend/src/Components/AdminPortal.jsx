@@ -11,11 +11,13 @@ import ViewTasks from "./ViewTask";
 import ViewFeedback from "./ViewFeedback";
 import useCurrentAdmin from "../hooks/useCurrentAdmin";
 import { useNavigate } from "react-router-dom";
+import useLogoutAdmin from "../hooks/useLogoutAdmin";
 
 const AdminPortal = () => {
   const [activeContent, setActiveContent] = useState("content1");
   const { admin, loadingAdmin } = useCurrentAdmin();
   const navigate = useNavigate();
+  const { logoutAdmin } = useLogoutAdmin();
 
   useEffect(
     function () {
@@ -25,6 +27,10 @@ const AdminPortal = () => {
     },
     [admin, loadingAdmin, navigate]
   );
+
+  function handleLogout() {
+    logoutAdmin();
+  }
 
   const renderContent = () => {
     switch (activeContent) {
@@ -93,8 +99,11 @@ const AdminPortal = () => {
         >
           <Card4 H1={"Feedbacks"} />
         </div>
-        <div className="mt-6 text-white font-bold hover:scale-105 ">
-          <CgLogOut size={40}/> Logout
+        <div
+          className="mt-6 text-white font-bold hover:scale-105 cursor-pointer"
+          onClick={handleLogout}
+        >
+          <CgLogOut size={40} /> Logout
         </div>
       </div>
 
