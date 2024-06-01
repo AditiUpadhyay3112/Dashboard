@@ -37,6 +37,7 @@ export const submitStudentTask = async (req, res) => {
 
     await User.findByIdAndUpdate(findUser._id, {
       studentPoints: findUser.studentPoints + Number(number),
+      totalPoints: findUser.totalPoints + Number(number) * 5,
     });
 
     return res
@@ -80,6 +81,8 @@ export const submitSocialTask = async (req, res) => {
 
     await User.findByIdAndUpdate(findUser._id, {
       socialPoints: findUser.socialPoints + Number(shares) + Number(followers),
+      totalPoints:
+        findUser.totalPoints + Number(shares) * 2 + Number(followers) * 3,
     });
 
     return res
@@ -125,6 +128,7 @@ export const submitMasterclassTask = async (req, res) => {
 
     await User.findByIdAndUpdate(findUser._id, {
       masterclassPoints: findUser.masterclassPoints + Number(registrations),
+      totalPoints: findUser.totalPoints + Number(registrations) * 3,
     });
 
     return res
@@ -170,6 +174,7 @@ export const submitWorkshopTask = async (req, res) => {
 
     await User.findByIdAndUpdate(findUser._id, {
       workshopPoints: findUser.workshopPoints + 1,
+      totalPoints: findUser.totalPoints + 10,
     });
 
     return res

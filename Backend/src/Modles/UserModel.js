@@ -35,6 +35,10 @@ const UserSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  totalPoints: {
+    type: Number,
+    default: 0,
+  },
   createdAt: {
     type: Date,
     default: Date.now,
