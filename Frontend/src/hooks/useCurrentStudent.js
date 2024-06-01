@@ -7,11 +7,8 @@ export default function useCurrentStudent() {
     queryFn: getCurrentStudent,
   });
 
-  console.log(student);
-
   return {
     student,
     isLoading,
-    isAuthenticated: student?.role === "authenticated",
   };
 }

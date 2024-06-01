@@ -5,6 +5,8 @@ import dotenv from "dotenv";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 import taskRouter from "./src/Routes/TaskRoutes.js";
+import feedbackRouter from "./src/Routes/FeedbackRoutes.js";
+import adminRouter from "./src/Routes/AdminRoutes.js";
 
 const app = express();
 dotenv.config();
@@ -22,6 +24,8 @@ app.get("/", (req, res) => {
   res.send("Server is created");
 });
 
+app.use("/admin", adminRouter);
+app.use("/feedback", feedbackRouter);
 app.use("/task", taskRouter);
 app.use("/api", router);
 

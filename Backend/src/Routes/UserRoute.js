@@ -5,8 +5,7 @@ import {
   getUser,
   logout,
 } from "../Controllers/UserController.js";
-import { isAuthorized } from "../recycle/UserAuthenticate.js";
-import protectRoute from "../utils/protectRoute.js";
+import { userProtectRoute } from "../utils/protectRoute.js";
 
 const router = express.Router();
 
@@ -14,8 +13,8 @@ router.post("/register", createUser);
 
 router.post("/login", Login);
 
-router.post("/logout", protectRoute, logout);
+router.post("/logout", userProtectRoute, logout);
 
-router.get("/currentUser", protectRoute, getUser);
+router.get("/currentUser", userProtectRoute, getUser);
 
 export default router;

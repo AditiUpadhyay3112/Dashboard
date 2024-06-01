@@ -1,7 +1,5 @@
 import { User } from "../Modles/UserModel.js";
-import { catchAsyncError } from "../recycle/catchAsyncError.js";
-import ErrorHandler from "../recycle/error.js";
-import { generateTokenAndSetCookie, sendToken } from "../recycle/jwtToken.js";
+import { generateUserTokenAndSetCookie } from "../utils/generateTokenAndSetCookie.js";
 
 export const createUser = async (req, res) => {
   try {
@@ -45,11 +43,7 @@ export const Login = async (req, res) => {
       return res.status(400).json({ error: "Invalid username or password" });
     }
 
-    // sendToken(user, 200, res, "User Loged In Successfully!");
-
-    generateTokenAndSetCookie(user._id, res);
-
-    console.log("login");
+    generateUserTokenAndSetCookie(user._id, res);
 
     return res.status(200).json({ message: "Login Successfull", user });
   } catch (error) {
@@ -60,10 +54,8 @@ export const Login = async (req, res) => {
 // LOGED OUT USER
 export const logout = async (req, res) => {
   try {
-    console.log(req.user);
-    res.cookie("jwt", "", { maxAge: 1 });
-    console.log("hello");
-    res.status(200).json({ message: "user logged out successfully" });
+    res.cookie("user", "", { maxAge: 1 });
+    res.status(200).json({ message: "Logged out successfully" });
   } catch (error) {
     res.status(500).json({ error: error.message });
     console.log(error.message);

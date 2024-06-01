@@ -9,9 +9,22 @@ import AddUser from "./Forms/AddUser";
 import AddTasks from "./Forms/AddTasks";
 import ViewTasks from "./ViewTask";
 import ViewFeedback from "./ViewFeedback";
+import useCurrentAdmin from "../hooks/useCurrentAdmin";
+import { useNavigate } from "react-router-dom";
 
 const AdminPortal = () => {
   const [activeContent, setActiveContent] = useState("content1");
+  const { admin, loadingAdmin } = useCurrentAdmin();
+  const navigate = useNavigate();
+
+  useEffect(
+    function () {
+      if (!loadingAdmin && !admin) {
+        navigate("/login");
+      }
+    },
+    [admin, loadingAdmin, navigate]
+  );
 
   const renderContent = () => {
     switch (activeContent) {
@@ -30,22 +43,24 @@ const AdminPortal = () => {
       case "content3":
         return (
           <div className=" col-span-2 ">
-            <ViewTasks/>
+            <ViewTasks />
           </div>
         );
-        case "content4":
+      case "content4":
         return (
           <div className="col-span-2  ">
             <h2 className="text-white text-lg md:text-xl  font-serif">
-              <ViewFeedback/>
+              <ViewFeedback />
             </h2>
           </div>
-        )
+        );
 
       default:
         return null;
     }
   };
+
+  if (loadingAdmin) return null;
 
   return (
     <div className="flex flex-col md:flex-row bg-gradient-to-r py-10 from-[#be38ac] via-[#894bbf] to-[#002a94] relative">
@@ -54,16 +69,28 @@ const AdminPortal = () => {
         <div className="w-16 h-16 z-50 bg-white rounded-full flex items-center justify-center mb-6">
           <CgProfile size={80} color="#f5b041" />
         </div>
-        <div className="w-full h-28 " onClick={() => setActiveContent("content1")}>
+        <div
+          className="w-full h-28 "
+          onClick={() => setActiveContent("content1")}
+        >
           <Card4 H1={"Add Student"} />
         </div>
-        <div className="w-full h-28 mt-6" onClick={() => setActiveContent("content2")}>
+        <div
+          className="w-full h-28 mt-6"
+          onClick={() => setActiveContent("content2")}
+        >
           <Card4 H1={"Add Tasks"} />
         </div>
-        <div className="w-full h-28 mt-6" onClick={() => setActiveContent("content3")}>
+        <div
+          className="w-full h-28 mt-6"
+          onClick={() => setActiveContent("content3")}
+        >
           <Card4 H1={"View Tasks"} />
         </div>
-        <div className="w-full h-28 mt-6" onClick={() => setActiveContent("content4")}>
+        <div
+          className="w-full h-28 mt-6"
+          onClick={() => setActiveContent("content4")}
+        >
           <Card4 H1={"Feedbacks"} />
         </div>
       </div>

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import useCurrentStudent from "./hooks/useCurrentStudent";
 
 export default function ProtectedRoute({ children }) {
-  const { student, isLoading, isAuthenticated } = useCurrentStudent();
+  const { student, isLoading } = useCurrentStudent();
   const navigate = useNavigate();
 
   useEffect(

@@ -8,6 +8,7 @@ import { toast } from "react-hot-toast";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useLoginUser from "../hooks/useLoginUser";
+import useLoginAdmin from "../hooks/useLoginAdmin";
 
 const Login = ({ H1 }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -18,9 +19,16 @@ const Login = ({ H1 }) => {
   });
   const navigate = useNavigate();
   const { loginStudent, isLogging } = useLoginUser();
+  const { adminLogin } = useLoginAdmin();
 
   const handleLogin = () => {
-    loginStudent(userDetail);
+    if (isAdminLogin) {
+      console.log(userDetail);
+      adminLogin(userDetail);
+    } else {
+      console.log(userDetail);
+      loginStudent(userDetail);
+    }
   };
 
   const handleForgotPasswordClick = () => {

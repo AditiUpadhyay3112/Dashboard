@@ -1,5 +1,5 @@
-import express, { Router } from "express";
-import { isAuthorized } from "../recycle/UserAuthenticate.js";
+import { Router } from "express";
+import { userProtectRoute } from "../utils/protectRoute.js";
 import {
   createAdminTask,
   getAdminTask,
@@ -15,7 +15,7 @@ import {
 
 const router = Router();
 
-router.use(isAuthorized);
+router.use(userProtectRoute);
 
 router.post("/student", submitStudentTask);
 router.post("/social", submitSocialTask);
