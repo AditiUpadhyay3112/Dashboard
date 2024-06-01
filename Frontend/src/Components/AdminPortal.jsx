@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import img1 from "../Images/img7.png";
 import PieChart from "./PieChart";
 import Card4 from "./Cards/Card4";
-import { CgProfile } from "react-icons/cg";
+import { CgLogOut, CgProfile } from "react-icons/cg";
 import SubmitTask from "./SubmitTask";
 import axios from "axios";
 import AddUser from "./Forms/AddUser";
@@ -65,7 +65,7 @@ const AdminPortal = () => {
   return (
     <div className="flex flex-col md:flex-row bg-gradient-to-r py-10 from-[#be38ac] via-[#894bbf] to-[#002a94] relative">
       <div className="absolute top-0 left-0 w-full h-full bg-[#000000a0]"></div>
-      <div className="w-full md:w-1/5 z-50 h-screen bg-[#6c4869] border border-[#ff9634] rounded-b-xl md:rounded-r-xl md:rounded-b-none flex flex-col items-center py-6 px-4">
+      <div className="w-full md:w-1/5 z-50  bg-[#6c4869] border border-[#ff9634] rounded-b-xl md:rounded-r-xl md:rounded-b-none flex flex-col items-center py-6 px-4">
         <div className="w-16 h-16 z-50 bg-white rounded-full flex items-center justify-center mb-6">
           <CgProfile size={80} color="#f5b041" />
         </div>
@@ -93,7 +93,11 @@ const AdminPortal = () => {
         >
           <Card4 H1={"Feedbacks"} />
         </div>
+        <div className="mt-6 text-white font-bold hover:scale-105 ">
+          <CgLogOut size={40}/> Logout
+        </div>
       </div>
+
       {/* Main Content */}
       <div className="w-full md:w-4/5 z-50 p-2 md:p-6 grid grid-cols-1 md:grid-cols-2 gap-4">
         {renderContent()}
