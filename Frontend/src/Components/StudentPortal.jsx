@@ -24,7 +24,7 @@ const StudentPortal = () => {
             <div className="rounded-lg h-[200px] md:h-[300px] text-white bg-[#6c4869] border px-2 md:px-4 py-4 md:py-8 border-[#ff9634] shadow-2xl shadow-black">
               <div className="grid items-center font-serif justify-center py-8 font-bold rounded-lg shadow-lg shadow-black">
                 <h1 className="text-center text-4xl">Total Points</h1>
-                <h1 className=" text-center text-9xl">00</h1>
+                <h1 className=" text-center text-9xl">{student.totalPoints}</h1>
               </div>
             </div>
             <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-4 md:px-6 py-4 md:py-6 shadow-2xl shadow-black">
@@ -34,7 +34,7 @@ const StudentPortal = () => {
                     Students Added
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    1
+                    {student.studentPoints}
                   </th>
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
@@ -42,12 +42,12 @@ const StudentPortal = () => {
                     Workshops Organised
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
-                    2
+                    {student.workshopPoints}
                   </th>
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
                   <th className="border rounded-lg border-[#ff9634] shadow-xl shadow-black md:h-16 h-20 text-base md:text-lg font-serif text-white flex items-center justify-center">
-                    Social Media
+                    {student.socialPoints}
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
                     3
@@ -55,7 +55,7 @@ const StudentPortal = () => {
                 </tr>
                 <tr className="border-2 rounded-lg border-[#ff9634] mt-4 md:mt-0 md:ml-2 grid grid-cols-1 px-4 md:px-6 py-4 md:py-6 shadow-xl shadow-black">
                   <th className="border rounded-lg border-[#ff9634] shadow-xl shadow-black md:h-16 h-20 text-base md:text-lg font-serif text-white flex items-center justify-center">
-                    Masterclass
+                    {student.masterclassPoints}
                   </th>
                   <th className="text-5xl md:text-9xl rounded-lg shadow-xl shadow-black text-white font-serif flex items-center justify-center">
                     4
