@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import img1 from "../Images/img7.png";
-import PieChart from "./PieChart";
 import Card4 from "./Cards/Card4";
 import { CgProfile } from "react-icons/cg";
 import SubmitTask from "./SubmitTask";
@@ -33,14 +32,14 @@ const StudentPortal = () => {
       case "content1":
         return (
           <>
-            <div className="rounded-lg h-[200px] md:h-[300px] bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634] relative">
-              <img src={img1} className="w-40 ml-10 md:w-80  z-50" alt="" />
-              {/* <h1 className="mt-4 flex justify-center items-center  text-3xl uppercase text-[#ffa71a] font-bold font-serif ">{user.name}</h1> */}
+            <div className="rounded-lg h-[200px] md:h-[300px] grid items-center justify-center p-6 bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634] relative">
+          <h1 className="text-4xl py-20 px-16 shadow-lg shadow-black rounded-lg font-bold text-white ">Student name</h1>
             </div>
-            <div className="rounded-lg h-[200px] md:h-[300px]  bg-[#6c4869] border px-2 md:px-4 py-2 md:py-4 border-[#ff9634] shadow-2xl shadow-black">
-              <div className="shadow-xl shadow-black py-2 rounded-lg">
-                <PieChart />
-              </div>
+            <div className="rounded-lg h-[200px] md:h-[300px] text-white bg-[#6c4869] border px-2 md:px-4 py-4 md:py-8 border-[#ff9634] shadow-2xl shadow-black">
+            <div className="grid items-center font-serif justify-center py-8 font-bold rounded-lg shadow-lg shadow-black">
+            <h1 className="text-center text-4xl">Total Points</h1>
+             <h1 className=" text-center text-9xl">00</h1>
+            </div>
             </div>
             <div className="rounded-lg col-span-2 bg-[#6c4869] border border-[#ff9634] px-4 md:px-6 py-4 md:py-6 shadow-2xl shadow-black">
               <table className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 w-full">

@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import img1 from "../Images/img7.png";
-import PieChart from "./PieChart";
 import Card4 from "./Cards/Card4";
 import { CgLogOut, CgProfile } from "react-icons/cg";
-import SubmitTask from "./SubmitTask";
-import axios from "axios";
 import AddUser from "./Forms/AddUser";
 import AddTasks from "./Forms/AddTasks";
 import ViewTasks from "./ViewTask";
