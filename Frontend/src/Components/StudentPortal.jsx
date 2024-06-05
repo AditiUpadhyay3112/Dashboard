@@ -3,7 +3,6 @@ import img1 from "../Images/img7.png";
 import Card4 from "./Cards/Card4";
 import { CgProfile } from "react-icons/cg";
 import SubmitTask from "./SubmitTask";
-import axios from "axios";
 import FeedbackForm from "./Forms/FeedbackForm";
 import useCurrentStudent from "../hooks/useCurrentStudent";
 
@@ -17,8 +16,8 @@ const StudentPortal = () => {
         return (
           <>
             <div className="rounded-lg h-[200px] md:h-[300px] grid items-center justify-center p-6 bg-[#6c4869] shadow-2xl shadow-black border border-[#ff9634] relative">
-              <h1 className="text-4xl py-20 px-16 shadow-lg shadow-black rounded-lg font-bold text-white ">
-                Student name
+              <h1 className="text-4xl py-20 px-28 uppercase font-serif  shadow-lg shadow-black rounded-lg font-bold text-white ">
+            {student.name}
               </h1>
             </div>
             <div className="rounded-lg h-[200px] md:h-[300px] text-white bg-[#6c4869] border px-2 md:px-4 py-4 md:py-8 border-[#ff9634] shadow-2xl shadow-black">

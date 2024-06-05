@@ -24,16 +24,16 @@ const Home = () => {
     <div className=''>
       <AboutCA H1={'Who is a'} H2={'Campus'} H3={'Ambassador?'}  P1={'"A chance to unleash your creativity, spread infectious positivity, and leave an indelible mark on our campus community."'} img={img1} />
     </div>
+    
     {/* <div>
       <Features H1={'FEATURES FOR YOU'} P1={'"A chance to unleash your creativity, spread infectious positivity, and leave an indelible mark on our campus community."'}/>
     </div> */}
-
-    <div>
+    {/* <div>
       <JobroleVideo H1={'JOB ROLE'} P1={'"A chance to unleash your creativity, spread infectious positivity, and leave an indelible mark on our campus community."'} img={img2} img1={img3} />
-    </div>
-    <div>
+    </div> */}
+    {/* <div>
       <Starfeed H1={"STAR OF THE WEEK"}/>
-    </div>
+    </div> */}
    
 
     <div>

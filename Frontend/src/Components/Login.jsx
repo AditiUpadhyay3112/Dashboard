@@ -2,16 +2,11 @@ import React, { useState } from "react";
 import image from "../Images/img6.png";
 import { IoIosArrowDroprightCircle, IoIosCloseCircle } from "react-icons/io";
 import "../App.css";
-import { IoAlertCircleOutline } from "react-icons/io5";
-import gif from "../Images/gif.gif";
-import { toast } from "react-hot-toast";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useLoginUser from "../hooks/useLoginUser";
 import useLoginAdmin from "../hooks/useLoginAdmin";
 
 const Login = ({ H1 }) => {
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAdminLogin, setIsAdminLogin] = useState(false);
   const [userDetail, setUserDetail] = useState({
     username: "",
@@ -31,13 +26,7 @@ const Login = ({ H1 }) => {
     }
   };
 
-  const handleForgotPasswordClick = () => {
-    setIsModalOpen(true);
-  };
-
-  const handleCloseModal = () => {
-    setIsModalOpen(false);
-  };
+ 
 
   return (
     <>
@@ -108,58 +97,12 @@ const Login = ({ H1 }) => {
                   <IoIosArrowDroprightCircle size={60} />
                 </button>
               </div>
-              <h1
-                className="absolute font-serif text-[#ffa71a] md:text-xs text-[7px] md:bottom-4 bottom-2 md:right-8 right-4 font-bold hover:underline-offset-2 cursor-pointer hover:underline"
-                onClick={handleForgotPasswordClick}
-              >
-                FORGOT PASSWORD?
-              </h1>
+           
             </div>
           </div>
         </div>
       </section>
 
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
-          <div className="bg-[#6d5575]  shadow-black rounded-lg py-20 px-20 border border-[#ffa71a] shadow-xl w-[90%] md:w-[50%] relative">
-            <button
-              className="absolute top-2 right-2 text-black hover:scale-95 "
-              onClick={handleCloseModal}
-            >
-              <IoIosCloseCircle size={30} color="white" />
-            </button>
-            <div className="">
-              <IoAlertCircleOutline
-                size={80}
-                color="white"
-                style={{ marginLeft: "195px" }}
-              />
-              <h2 className="text-xl text-center text-white font-serif font-bold mb-4">
-                Reset Password
-              </h2>
-            </div>
-            <img
-              src={gif}
-              alt=""
-              className="absolute  opacity-30  -z-0 right-14 top-20 "
-            />
-
-            <form>
-              <input
-                type="email"
-                placeholder="ENTER YOUR EMAIL"
-                className="w-full  p-2 mb-4 border rounded-md shadow-xl shadow-black "
-              />
-              <button
-                type="submit"
-                className="w-full bg-[#ffa71a]  duration-700  hover:bg-[#ffc05a] shadow-xl  shadow-black text-white py-2 rounded-md"
-              >
-                Submit
-              </button>
-            </form>
-          </div>
-        </div>
-      )}
     </>
   );
 };
